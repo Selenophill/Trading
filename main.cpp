@@ -1,6 +1,7 @@
 // C++ Program to create
 // Trading application
 #include <bits/stdc++.h>
+#include<string.h>
 using namespace std;
 
 // Class created for binding
@@ -21,6 +22,24 @@ int crypto_return;
 	vector<pair<string, int> > transactions;
 
 public:
+bool login() {
+    string username, password;
+    cout << "Enter username: ";
+    cin >> username;
+
+    // Replace with actual username and password verification
+    if (username == "CSE") {
+        cout << "Enter password: ";
+        cin >> password;
+        if (password == "UUV") {
+            cout << "Login successful!" << endl;
+            return true;
+        }
+    }
+
+    cout << "Invalid username or password." << endl;
+    return false;
+}
 	// Deposit Cash
 	bool Deposit(int money)
 	{
@@ -152,93 +171,79 @@ bool buy_crypto() {
 	}
 };
 
-int main()
-{
-	Account person;
-	int amount, choice;
-	bool check;
-	while (1) {
+int main() {
+    Account person;
+    int amount, choice;
 
-		cout << " "
-				"******************************************"
-				"***************************** \n";
+    // Indentation corrected for clarity
+     while (!person.login()) {
+        // Keep prompting for login until successful
+     }
 
-		cout << endl;
-		cout << "Press 1 if want to have your Account Info "
-			<< endl;
-		cout << "Press 2 if want to Deposit your money "
-			<< endl;
-		cout << "Press 3 if want to withdraw your money "
-			<< endl;
-		cout << "Press 4 if want to know your history "
-			<< endl;
-		cout << "Press 5 if want to know your Buy Crypto "
-			<< endl;
-		cout << "Press 6 if want to know your Sell Crypto "
-			<< endl;
-		cout << "Else press any invalid key for exit \n"
-			<< endl;
+    // Trading options menu displayed only after successful login
+    while (1) {
+        cout << "******************************************************\n";
+        cout << endl;
+        cout << "Press 1 to view Account Info" << endl;
+        cout << "Press 2 to Deposit money" << endl;
+        cout << "Press 3 to Withdraw money" << endl;
+        cout << "Press 4 to view History" << endl;
+        cout << "Press 5 to Buy Crypto" << endl;
+        cout << "Press 6 to Sell Crypto" << endl;
+        cout << "Press any other key to Exit" << endl;
+        cout << endl;
+        cout << "******************************************************\n";
 
-		cout << " "
-				"******************************************"
-				"***************************** \n";
+        cin >> choice;
+        int ans;
 
-		cin >> choice;
-		int ans;
+        switch (choice) {
+            case 1:
+                person.Get_account_information();
+                break;
+            case 2:
+                cout << "Enter amount to deposit: ";
+                cin >> amount;
+                ans = person.Deposit(amount);
+                if (ans) {
+                    cout << "Successfully deposited money" << endl;
+                } else {
+                    cout << "Deposit failed\n";
+                }
+                break;
+            case 3:
+                cout << "Enter amount to withdraw: ";
+                cin >> amount;
+                ans = person.Withdraw(amount);
+                if (ans) {
+                    cout << "Successfully withdrawn amount" << endl;
+                } else {
+                    cout << "Not enough balance\n";
+                }
+                break;
+            case 4:
+                person.History();
+                break;
+            case 5:
+                ans = person.buy_crypto();
+                if (ans) {
+                    cout << "Successful transaction" << endl;
+                } else {
+                    cout << "Transaction failed\n";
+                }
+                break;
+            case 6:
+                ans = person.sell_crypto();
+                if (ans) {
+                    cout << "Successful transaction" << endl;
+                } else {
+                    cout << "Not enough cryptocoins\n";
+                }
+                break;
+            default:
+                exit(0);
+        }
+    }
 
-		switch (choice) {
-		case 1:
-			person.Get_account_information();
-			break;
-
-		case 2:
-			cout << "Enter amount to deposit : ";
-			cin >> amount;
-			ans = person.Deposit(amount);
-			if (ans)
-				cout << "Successfully deposited money"
-					<< endl;
-			else
-				cout << "Failed\n";
-
-			break;
-
-		case 3:
-			cout << "Enter amount to withdrawn : ";
-			cin >> amount;
-			person.Withdraw(amount);
-
-			if (ans)
-				cout << "Successfully withdrawn Amount"
-					<< endl;
-			else
-				cout << "Not Enough Balance\n";
-
-			break;
-
-		case 4:
-			person.History();
-			break;
-
-		case 5:
-			ans = person.buy_crypto();
-			if (ans)
-				cout << "Successful Transaction" << endl;
-			else
-				cout << "Better Luck next time\n";
-			break;
-
-		case 6:
-			ans = person.sell_crypto();
-			if (ans)
-				cout << "Successful Transaction" << endl;
-			else
-				cout << "Not Enough Cryptocoins\n";
-			break;
-
-		default:
-			exit(0);
-			break;
-		}
-	}
+    return 0;
 }
