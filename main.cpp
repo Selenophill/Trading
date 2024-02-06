@@ -28,18 +28,22 @@ bool login() {
     cin >> username;
 
     // Replace with actual username and password verification
-    if (username == "CSE") {
+if (username == "CSE") {
         cout << "Enter password: ";
         cin >> password;
+        // Check if the password is correct
         if (password == "UUV") {
             cout << "Login successful!" << endl;
             return true;
+        } else {
+            cout << "Wrong password." << endl;
+            return false;
         }
+    } else {
+        cout << "Invalid username." << endl;
+        return false;
     }
-
-    cout << "Invalid username or password." << endl;
-    return false;
-}
+}    
 	// Deposit Cash
 	bool Deposit(int money)
 	{
