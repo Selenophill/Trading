@@ -186,17 +186,17 @@ int main() {
 
     // Trading options menu displayed only after successful login
     while (1) {
-        cout << "******************************************************\n";
+        cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n";
         cout << endl;
-        cout << "Press 1 to view Account Info" << endl;
-        cout << "Press 2 to Deposit money" << endl;
-        cout << "Press 3 to Withdraw money" << endl;
-        cout << "Press 4 to view History" << endl;
-        cout << "Press 5 to Buy Crypto" << endl;
-        cout << "Press 6 to Sell Crypto" << endl;
+        cout << " 1. To view Account Info" << endl;
+        cout << " 2. To Deposit money" << endl;
+        cout << " 3. To Withdraw money" << endl;
+        cout << " 4. To view History" << endl;
+        cout << " 5. To Buy Crypto" << endl;
+        cout << " 6. To Sell Crypto" << endl;
         cout << "Press any other key to Exit" << endl;
         cout << endl;
-        cout << "******************************************************\n";
+        cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n";
 
         cin >> choice;
         int ans;
